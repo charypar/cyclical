@@ -19,4 +19,6 @@ Gem::Specification.new do |gem|
   gem.require_paths = ["lib"]
 
   gem.add_runtime_dependency 'active_support'
+
+  gem.add_development_dependency 'rspec'
 end
