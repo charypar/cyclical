@@ -139,7 +139,7 @@ module Cyclical
     end
 
     def to_hash
-      hash = { :freq => self.class.to_s.underscore.split('_').first, :interval => @interval }
+      hash = { :freq => self.class.to_s.underscore.split('/').last.split('_').first, :interval => @interval }
 
       hash[:count] = @count if @count
       hash[:stop] = @stop if @stop
@@ -178,7 +178,7 @@ module Cyclical
       def from_hash(hash)
         raise "Bad Hash format: '#{hash.inspect}'" unless hash[:freq] && hash[:interval]
 
-        rule = self.send hash[:freq].to_sym, hash[:interval].to_i
+        rule = self.send(hash[:freq].to_sym, hash[:interval].to_i)
 
         rule.count(hash[:count]) if hash.has_key?(:count)
         rule.stop(hash[:stop]) if hash.has_key?(:stop)

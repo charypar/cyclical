@@ -1,3 +1,5 @@
+require 'time'
+
 require 'cyclical/rule'
 
 require 'cyclical/rules/daily_rule'
